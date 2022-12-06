@@ -1,0 +1,11 @@
+.allVideosCon {
+  height: 87vh;
+  width: 200px;
+}
+.allVideosCon::-webkit-scrollbar {
+  display: none;
+}
+.homeBanner {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
+}
