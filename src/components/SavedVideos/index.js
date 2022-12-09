@@ -4,8 +4,7 @@ import {formatDistanceToNow} from 'date-fns'
 import {Link} from 'react-router-dom'
 import {MdPlaylistAdd} from 'react-icons/md'
 import Header from '../Header'
-import LeftContentsSection from '../LeftContentsSection'
-import TrendingVideoItem from '../TrendingVideoItem'
+import Slider from '../Slider'
 import NextWatchContext from '../../context/NextWatchContext'
 import EmptySavedListView from '../EmptySavedLIstView'
 import {Container} from '../../StyledComponent'
@@ -46,20 +45,24 @@ class SavedVideos extends Component {
     )
   }
 
-  renderSavedList = savedList => (
+  renderSavedList = savedVideosList => (
     <>
-      {savedList.length !== 0 ? (
+      {savedVideosList.length !== 0 ? (
         <div className="d-flex flex-column trendingParentCon">
-          <div className="banner w-100 d-flex align-items-center p-3 mb-3">
+          <div
+            className="banner w-100 d-flex align-items-center p-3 mb-3"
+            data-testid="banner"
+          >
             <div className="d-flex justify-content-center align-items-center trendingIcon rounded-circle">
               <MdPlaylistAdd className="mb-0 h5 firelogo" />
             </div>
-            <h1 className="h4 font-wight-bold ml-3 mb-0">Saved Videos</h1>
+            <h1 className="h4 font-wight-bold ml-3 mb-0 text-dark">
+              Saved Videos
+            </h1>
           </div>
           <ul className="list-unstyled trendingParentCon d-flex flex-column w-100 overflow-auto">
-            {savedList.map(obj => (
+            {savedVideosList.map(obj => (
               <li key={uuidv4()} className="">
-                {/* <TrendingVideoItem videoDetails={obj} /> */}
                 {this.renderCard(obj)}
               </li>
             ))}
@@ -75,7 +78,7 @@ class SavedVideos extends Component {
     return (
       <NextWatchContext.Consumer>
         {value => {
-          const {isDarkMode, savedList} = value
+          const {isDarkMode, savedVideosList} = value
           return (
             <Container
               className="vh-100 d-flex flex-column overflow-auto"
@@ -84,8 +87,8 @@ class SavedVideos extends Component {
             >
               <Header />
               <div className="d-flex HomeBottomSectionCon">
-                <LeftContentsSection />
-                {this.renderSavedList(savedList)}
+                <Slider />
+                {this.renderSavedList(savedVideosList)}
               </div>
             </Container>
           )

@@ -8,7 +8,7 @@ import './index.css'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 
-import LeftContentsSection from '../LeftContentsSection'
+import Slider from '../Slider'
 import {Container} from '../../StyledComponent'
 import NextWatchContext from '../../context/NextWatchContext'
 
@@ -92,7 +92,7 @@ class Gaming extends Component {
     const {thumbnailUrl, viewsCount, id} = obj
     return (
       <Link to={`/videos/${id}`} className="link">
-        <div className="card p-2 m-2 cardGame">
+        <div className="card p-2 m-2 cardGame text-dark">
           <div className="">
             <img src={thumbnailUrl} alt="" className=" w-100" />
           </div>
@@ -108,11 +108,14 @@ class Gaming extends Component {
     const {gamesList} = this.state
     return (
       <div className="trendingParentCon d-flex flex-column w-100 overflow-auto">
-        <div className="banner w-100 d-flex align-items-center p-3">
+        <div
+          className="banner w-100 d-flex align-items-center p-3"
+          data-testid="banner"
+        >
           <div className="d-flex justify-content-center align-items-center trendingIcon rounded-circle">
             <IoLogoGameControllerB className="mb-0 h5 firelogo" />
           </div>
-          <h1 className="h4 font-wight-bold ml-3 mb-0">Gaming</h1>
+          <h1 className="h4 font-wight-bold ml-3 mb-0 text-dark">Gaming</h1>
         </div>
 
         <ul className="list-unstyled d-flex flex-wrap flex-row p-2">
@@ -154,7 +157,7 @@ class Gaming extends Component {
             >
               <Header />
               <div className="d-flex HomeBottomSectionCon">
-                <LeftContentsSection />
+                <Slider />
                 {this.decideWhatToSHow(isDarkMode)}
               </div>
             </Container>

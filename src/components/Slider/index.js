@@ -35,7 +35,7 @@ const RoutesList = [
   },
 ]
 
-class LeftContentsSection extends Component {
+class Slider extends Component {
   renderRoutes = () => {
     console.log()
     return (
@@ -52,7 +52,9 @@ class LeftContentsSection extends Component {
                   <Link to={`${obj.path}`} className="link">
                     <button
                       className={`buttonRoute d-flex align-items-center p-2 ${
-                        activeRoute === obj.id ? 'text-danger' : ''
+                        activeRoute === obj.id
+                          ? 'text-danger font-weight-bold'
+                          : ''
                       }`}
                       type="button"
                       onClick={() => onRouteClick(obj.id)}
@@ -80,4 +82,4 @@ class LeftContentsSection extends Component {
   }
 }
 
-export default LeftContentsSection
+export default Slider

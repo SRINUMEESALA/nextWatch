@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import './index.css'
 import Header from '../Header'
-import LeftContentsSection from '../LeftContentsSection'
+import Slider from '../Slider'
 import AllVideos from '../AllVideos'
 import {Container} from '../../StyledComponent'
 import NextWatchContext from '../../context/NextWatchContext'
@@ -20,7 +20,7 @@ class Home extends Component {
             >
               <Header />
               <div className="d-flex HomeBottomSectionCon">
-                <LeftContentsSection />
+                <Slider />
                 <AllVideos />
               </div>
             </Container>

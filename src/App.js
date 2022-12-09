@@ -16,7 +16,7 @@ import Gaming from './components/Gaming'
 class App extends Component {
   state = {
     activeRoute: 'HOME',
-    savedList: [],
+    savedVideosList: [],
     likedList: [],
     disLikedList: [],
     isDarkMode: false,
@@ -32,17 +32,16 @@ class App extends Component {
   }
 
   updateSavedList = selVideo => {
-    const {savedList} = this.state
-    const isExits = savedList.filter(obj => obj.id === selVideo.id).length === 0
+    const {savedVideosList} = this.state
+    const isExits =
+      savedVideosList.filter(obj => obj.id === selVideo.id).length === 0
     if (!isExits) {
-      const ind = savedList.indexOf(selVideo)
-      savedList.pop(ind)
-      this.setState({savedList})
-      console.log('in')
+      const ind = savedVideosList.findIndex(obj => obj.id === selVideo.id)
+      savedVideosList.splice(ind, 1)
+      this.setState({savedVideosList})
     } else {
-      console.log('not')
-      savedList.push(selVideo)
-      this.setState({savedList})
+      savedVideosList.push(selVideo)
+      this.setState({savedVideosList})
     }
   }
 
@@ -54,14 +53,18 @@ class App extends Component {
       disLikedList.filter(obj => obj.id === videoDetails.id).length !== 0
     if (!isExitsL) {
       if (isExitsD) {
-        const ind = disLikedList.indexOf(videoDetails)
-        disLikedList.pop(ind)
+        const ind = disLikedList.findIndex(obj => obj.id === videoDetails.id)
+        disLikedList.splice(ind, 1)
         likedList.push(videoDetails)
         this.setState({disLikedList, likedList})
       } else {
         likedList.push(videoDetails)
         this.setState({disLikedList, likedList})
       }
+    } else {
+      const ind = likedList.findIndex(obj => obj.id === videoDetails.id)
+      likedList.splice(ind, 1)
+      this.setState({likedList})
     }
   }
 
@@ -73,21 +76,25 @@ class App extends Component {
       disLikedList.filter(obj => obj.id === videoDetails.id).length !== 0
     if (!isExitsD) {
       if (isExitsL) {
-        const ind = likedList.indexOf(videoDetails)
-        likedList.pop(ind)
+        const ind = likedList.findIndex(obj => obj.id === videoDetails.id)
+        likedList.splice(ind, 1)
         disLikedList.push(videoDetails)
         this.setState({disLikedList, likedList})
       } else {
         disLikedList.push(videoDetails)
         this.setState({disLikedList, likedList})
       }
+    } else {
+      const ind = disLikedList.findIndex(obj => obj.id === videoDetails.id)
+      disLikedList.splice(ind, 1)
+      this.setState({disLikedList})
     }
   }
 
   render() {
     const {
       activeRoute,
-      savedList,
+      savedVideosList,
       disLikedList,
       likedList,
       isDarkMode,
@@ -99,7 +106,7 @@ class App extends Component {
           value={{
             activeRoute,
             updateActiveRoute: this.updateActiveRoute,
-            savedList,
+            savedVideosList,
             updateSavedList: this.updateSavedList,
             likedList,
             updateLikedList: this.updateLikedList,

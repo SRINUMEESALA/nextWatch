@@ -3,7 +3,7 @@ import React from 'react'
 const NextWatchContext = React.createContext({
   activeRoute: '',
   updateActiveRoute: () => {},
-  savedList: [],
+  savedVideosList: [],
   updateSavedList: () => {},
   likedList: [],
   updateLikedList: () => {},

@@ -9,7 +9,7 @@ import Header from '../Header'
 
 import './index.css'
 
-import LeftContentsSection from '../LeftContentsSection'
+import Slider from '../Slider'
 import TrendingVideoItem from '../TrendingVideoItem'
 import {Container} from '../../StyledComponent'
 import NextWatchContext from '../../context/NextWatchContext'
@@ -63,11 +63,14 @@ class Trending extends Component {
 
     return (
       <div className="trendingParentCon d-flex flex-column w-100 overflow-auto">
-        <div className="banner w-100 d-flex align-items-center p-3">
+        <div
+          className="banner w-100 d-flex align-items-center p-3"
+          data-testid="banner"
+        >
           <div className="d-flex justify-content-center align-items-center trendingIcon rounded-circle">
             <AiFillFire className="mb-0 h5 firelogo" />
           </div>
-          <h1 className="h4 font-wight-bold ml-3 mb-0">Trending</h1>
+          <h1 className="h4 font-wight-bold ml-3 mb-0 text-dark">Trending</h1>
         </div>
         <ul className="list-unstyled">
           {trendingVideosList.map(obj => (
@@ -138,7 +141,7 @@ class Trending extends Component {
             >
               <Header />
               <div className="d-flex HomeBottomSectionCon">
-                <LeftContentsSection />
+                <Slider />
                 {this.decideWhatToSHow()}
               </div>
             </Container>

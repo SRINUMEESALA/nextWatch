@@ -3,7 +3,7 @@ import {IoIosClose} from 'react-icons/io'
 
 import './index.css'
 import AllVideosList from '../AllVideosList'
-import {Container} from '../../StyledComponent'
+import Container from './StyledComponent'
 
 class AllVideos extends Component {
   state = {showBanner: true}
@@ -14,8 +14,9 @@ class AllVideos extends Component {
 
   renderBanner = () => (
     <Container
-      className="card d-flex flex-column align-items-start p-2 homeBanner pl-3"
+      className="card d-flex flex-column align-items-start p-2 homeBanner pl-3 "
       data-testid="banner"
+      bgImage="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png"
     >
       <div className="mb-3 mt-2 d-flex justify-content-between w-100">
         <img
@@ -29,14 +30,14 @@ class AllVideos extends Component {
           data-testid="close"
           onClick={this.onClickClose}
         >
-          <IoIosClose className="h4" />
+          <IoIosClose className="h4 text-dark" />
         </button>
       </div>
 
-      <p className="card-text mb-3 ">
+      <p className="card-text mb-3 text-dark">
         Buy Nxt Watch Premium Prepaid Plans With UPI
       </p>
-      <button className="btn btn-outline-dark btn-sm mb-2" type="button">
+      <button className="btn btn-outline-success btn-sm mb-2" type="button">
         GET IT NOW
       </button>
     </Container>
